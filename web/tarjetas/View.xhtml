@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TarjetasViewDlg" widgetVar="TarjetasViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTarjetasTitle}">
+            <h:form id="TarjetasViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tarjetasController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTarjetasLabel_id}"/>
+                        <h:outputText value="#{tarjetasController.selected.id}" title="#{bundle.ViewTarjetasTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewTarjetasLabel_tipoTarjeta}"/>
+                        <h:outputText value="#{tarjetasController.selected.tipoTarjeta}" title="#{bundle.ViewTarjetasTitle_tipoTarjeta}"/>
+                        <h:outputText value="#{bundle.ViewTarjetasLabel_numeroTarjeta}"/>
+                        <h:outputText value="#{tarjetasController.selected.numeroTarjeta}" title="#{bundle.ViewTarjetasTitle_numeroTarjeta}"/>
+                        <h:outputText value="#{bundle.ViewTarjetasLabel_mesExpiracion}"/>
+                        <h:outputText value="#{tarjetasController.selected.mesExpiracion}" title="#{bundle.ViewTarjetasTitle_mesExpiracion}"/>
+                        <h:outputText value="#{bundle.ViewTarjetasLabel_anioExpiracion}"/>
+                        <h:outputText value="#{tarjetasController.selected.anioExpiracion}" title="#{bundle.ViewTarjetasTitle_anioExpiracion}"/>
+                        <h:outputText value="#{bundle.ViewTarjetasLabel_numeroCVV}"/>
+                        <h:outputText value="#{tarjetasController.selected.numeroCVV}" title="#{bundle.ViewTarjetasTitle_numeroCVV}"/>
+                        <h:outputText value="#{bundle.ViewTarjetasLabel_status}"/>
+                        <h:outputText value="#{tarjetasController.selected.status}" title="#{bundle.ViewTarjetasTitle_status}"/>
+                        <h:outputText value="#{bundle.ViewTarjetasLabel_idUsuario}"/>
+                        <h:outputText value="#{tarjetasController.selected.idUsuario}" title="#{bundle.ViewTarjetasTitle_idUsuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TarjetasViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TarjetasEditDlg" widgetVar="TarjetasEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTarjetasTitle}">
+            <h:form id="TarjetasEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tarjetasController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTarjetasLabel_id}" for="id" />
+                        <p:inputText id="id" disabled="true" value="#{tarjetasController.selected.id}" title="#{bundle.EditTarjetasTitle_id}" required="true" requiredMessage="#{bundle.EditTarjetasRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditTarjetasLabel_tipoTarjeta}" for="tipoTarjeta" />
+                        <p:inputText id="tipoTarjeta" value="#{tarjetasController.selected.tipoTarjeta}" title="#{bundle.EditTarjetasTitle_tipoTarjeta}" required="true" requiredMessage="#{bundle.EditTarjetasRequiredMessage_tipoTarjeta}"/>
+                        <p:outputLabel value="#{bundle.EditTarjetasLabel_numeroTarjeta}" for="numeroTarjeta" />
+                        <p:inputText id="numeroTarjeta" value="#{tarjetasController.selected.numeroTarjeta}" title="#{bundle.EditTarjetasTitle_numeroTarjeta}" required="true" requiredMessage="#{bundle.EditTarjetasRequiredMessage_numeroTarjeta}"/>
+                        <p:outputLabel value="#{bundle.EditTarjetasLabel_mesExpiracion}" for="mesExpiracion" />
+                        <p:inputText id="mesExpiracion" value="#{tarjetasController.selected.mesExpiracion}" title="#{bundle.EditTarjetasTitle_mesExpiracion}" required="true" requiredMessage="#{bundle.EditTarjetasRequiredMessage_mesExpiracion}"/>
+                        <p:outputLabel value="#{bundle.EditTarjetasLabel_anioExpiracion}" for="anioExpiracion" />
+                        <p:inputText id="anioExpiracion" value="#{tarjetasController.selected.anioExpiracion}" title="#{bundle.EditTarjetasTitle_anioExpiracion}" required="true" requiredMessage="#{bundle.EditTarjetasRequiredMessage_anioExpiracion}"/>
+                        <p:outputLabel value="#{bundle.EditTarjetasLabel_numeroCVV}" for="numeroCVV" />
+                        <p:inputText id="numeroCVV" value="#{tarjetasController.selected.numeroCVV}" title="#{bundle.EditTarjetasTitle_numeroCVV}" required="true" requiredMessage="#{bundle.EditTarjetasRequiredMessage_numeroCVV}"/>
+                        
+                          
+                        
+                        <p:outputLabel value="#{bundle.EditTarjetasLabel_idUsuario}" for="idUsuario" />
+                        <p:selectOneMenu id="idUsuario" style="width: 180px" value="#{tarjetasController.selected.idUsuario}" required="true" requiredMessage="#{bundle.EditTarjetasRequiredMessage_idUsuario}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{usersController.itemsAvailableSelectOne}"
+                                           var="idUsuarioItem"
+                                           itemValue="#{idUsuarioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tarjetasController.update}" value="#{bundle.Save}" update="display,:TarjetasListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TarjetasEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TarjetasEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

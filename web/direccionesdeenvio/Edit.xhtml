@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DireccionesdeenvioEditDlg" widgetVar="DireccionesdeenvioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDireccionesdeenvioTitle}">
+            <h:form id="DireccionesdeenvioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{direccionesdeenvioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDireccionesdeenvioLabel_id}" for="id" />
+                        <p:inputText id="id" disabled="true" value="#{direccionesdeenvioController.selected.id}" title="#{bundle.EditDireccionesdeenvioTitle_id}" required="true" requiredMessage="#{bundle.EditDireccionesdeenvioRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditDireccionesdeenvioLabel_calle}" for="calle" />
+                        <p:inputText id="calle" value="#{direccionesdeenvioController.selected.calle}" title="#{bundle.EditDireccionesdeenvioTitle_calle}" required="true" requiredMessage="#{bundle.EditDireccionesdeenvioRequiredMessage_calle}"/>
+                        <p:outputLabel value="#{bundle.EditDireccionesdeenvioLabel_colonia}" for="colonia" />
+                        <p:inputText id="colonia" value="#{direccionesdeenvioController.selected.colonia}" title="#{bundle.EditDireccionesdeenvioTitle_colonia}" required="true" requiredMessage="#{bundle.EditDireccionesdeenvioRequiredMessage_colonia}"/>
+                        <p:outputLabel value="#{bundle.EditDireccionesdeenvioLabel_cp}" for="cp" />
+                        <p:inputText id="cp" value="#{direccionesdeenvioController.selected.cp}" title="#{bundle.EditDireccionesdeenvioTitle_cp}" required="true" requiredMessage="#{bundle.EditDireccionesdeenvioRequiredMessage_cp}"/>
+                        <p:outputLabel value="#{bundle.EditDireccionesdeenvioLabel_numExterior}" for="numExterior" />
+                        <p:inputText id="numExterior" value="#{direccionesdeenvioController.selected.numExterior}" title="#{bundle.EditDireccionesdeenvioTitle_numExterior}" required="true" requiredMessage="#{bundle.EditDireccionesdeenvioRequiredMessage_numExterior}"/>
+                        <p:outputLabel value="#{bundle.EditDireccionesdeenvioLabel_referenciaConstruccion}" for="referenciaConstruccion" />
+                        <p:inputText id="referenciaConstruccion" value="#{direccionesdeenvioController.selected.referenciaConstruccion}" title="#{bundle.EditDireccionesdeenvioTitle_referenciaConstruccion}" required="true" requiredMessage="#{bundle.EditDireccionesdeenvioRequiredMessage_referenciaConstruccion}"/>
+                        <p:outputLabel value="#{bundle.EditDireccionesdeenvioLabel_referenciaCalle1}" for="referenciaCalle1" />
+                        <p:inputText id="referenciaCalle1" value="#{direccionesdeenvioController.selected.referenciaCalle1}" title="#{bundle.EditDireccionesdeenvioTitle_referenciaCalle1}" required="true" requiredMessage="#{bundle.EditDireccionesdeenvioRequiredMessage_referenciaCalle1}"/>
+                        <p:outputLabel value="#{bundle.EditDireccionesdeenvioLabel_referenciaCalle2}" for="referenciaCalle2" />
+                        <p:inputText id="referenciaCalle2" value="#{direccionesdeenvioController.selected.referenciaCalle2}" title="#{bundle.EditDireccionesdeenvioTitle_referenciaCalle2}" required="true" requiredMessage="#{bundle.EditDireccionesdeenvioRequiredMessage_referenciaCalle2}"/>
+                        
+                        <p:outputLabel value="#{bundle.EditDireccionesdeenvioLabel_status}" for="status" />
+                        <p:selectOneMenu id="status" value="#{direccionesdeenvioController.selected.status}" style="width: 200px" required="true" requiredMessage="#{bundle.EditDireccionesdeenvioRequiredMessage_status}">
+                            <f:selectItem itemLabel="--Seleccionar--" itemValue=""></f:selectItem>   
+                            <f:selectItem itemLabel="Activo" itemValue="1"></f:selectItem> 
+                            <f:selectItem itemLabel="Baja" itemValue="0"></f:selectItem> 
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="#{bundle.EditDireccionesdeenvioLabel_idUsuario}" for="idUsuario" />
+                        <p:selectOneMenu id="idUsuario" value="#{direccionesdeenvioController.selected.idUsuario}" required="true" requiredMessage="#{bundle.EditDireccionesdeenvioRequiredMessage_idUsuario}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{usersController.itemsAvailableSelectOne}"
+                                           var="idUsuarioItem"
+                                           itemValue="#{idUsuarioItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDireccionesdeenvioLabel_idPais}" for="idPais" />
+                        <p:selectOneMenu id="idPais" value="#{direccionesdeenvioController.selected.idPais}" required="true" requiredMessage="#{bundle.EditDireccionesdeenvioRequiredMessage_idPais}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{paisesController.itemsAvailableSelectOne}"
+                                           var="idPaisItem"
+                                           itemValue="#{idPaisItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDireccionesdeenvioLabel_idEntidad}" for="idEntidad" />
+                        <p:selectOneMenu id="idEntidad" value="#{direccionesdeenvioController.selected.idEntidad}" required="true" requiredMessage="#{bundle.EditDireccionesdeenvioRequiredMessage_idEntidad}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{entidadesController.itemsAvailableSelectOne}"
+                                           var="idEntidadItem"
+                                           itemValue="#{idEntidadItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDireccionesdeenvioLabel_idMunicipio}" for="idMunicipio" />
+                        <p:selectOneMenu id="idMunicipio" value="#{direccionesdeenvioController.selected.idMunicipio}" required="true" requiredMessage="#{bundle.EditDireccionesdeenvioRequiredMessage_idMunicipio}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{municipiosController.itemsAvailableSelectOne}"
+                                           var="idMunicipioItem"
+                                           itemValue="#{idMunicipioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{direccionesdeenvioController.update}" value="#{bundle.Save}" update="display,:DireccionesdeenvioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DireccionesdeenvioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DireccionesdeenvioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

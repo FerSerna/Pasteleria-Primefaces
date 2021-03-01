@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template/templateCruds.xhtml">
+        
+
+        <ui:define name="body">
+        <!--End primary navbar  -->
+        <div class="page-header header-filter clear-filter purple-filter" data-parallax="true" style="background: url('resources/assets/img/fondoCruds.jpg')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="brand">
+                            <h1>CRUD'S</h1>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- BASIC ELEMENTS -->
+                <div class="main main-raised">
+                    <div class="section ">
+                        <div class="container">
+                            <div class="row">
+                                <div class=" ml-auto mr-auto">
+                                    <div class="profile-tabs">
+                                        <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                                            <li class="nav-item">
+                                                <h:link outcome="/categorias/List" class="nav-link active" role="tab" >
+                                                    
+                                                    <i class="material-icons">category</i><br/>Categorias<br/><br/>
+                                                </h:link>
+                                                
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/compras/List" class="nav-link " role="tab" >
+                                                     <i class="material-icons">shopping_cart</i><br/>Compras<br/><br/>
+                                                </h:link>
+                                               
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/detallecompraproducto/List" class="nav-link active" role="tab" >
+                                                    <i class="material-icons">query_stats</i> Detalle<br/> Compra <br/>Producto
+                                                </h:link>
+                                               
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/detalleventaproducto/List" class="nav-link " role="tab" >
+                                                    <i class="material-icons">query_stats</i> Detalle<br/> Venta <br/>Producto
+                                                </h:link>
+                                               
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/direccionesdeenvio/List" class="nav-link active" role="tab" >
+                                                    <i class="material-icons">edit_location_alt</i>Direcciones <br/>de Envio<br/><br/>
+                                                </h:link>
+                                               
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/entidades/List" class="nav-link " role="tab" >
+                                                        <i class="material-icons">my_location</i><br/>Entidades<br/><br/>
+                                                </h:link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/envios/List" class="nav-link active" role="tab" >
+                                                        <i class="material-icons">local_shipping</i><br/>Envios<br/><br/>
+                                                </h:link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/estadosdeenvio/List" class="nav-link " role="tab" >
+                                                    <i class="material-icons">change_circle</i> Estados <br/>de Envio<br/><br/>
+                                                </h:link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/fotosproductos/List" class="nav-link active" role="tab" >
+                                                    <i class="material-icons">monochrome_photos</i> Fotos <br/>producto<br/><br/>
+                                                </h:link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/municipios/List" class="nav-link " role="tab" >
+                                                    <i class="material-icons">location_city</i><br/>Municipios<br/><br/>
+                                                </h:link>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class=" ml-auto mr-auto">
+                                    <div class="profile-tabs">
+                                        <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                                            <li class="nav-item">
+                                                <h:link outcome="/paises/List" class="nav-link" role="tab" >
+                                                    <i class="material-icons">public</i><br/>Paises<br/><br/>
+                                                </h:link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/paqueterias/List" class="nav-link active" role="tab" >
+                                                    <i class="material-icons">add_road</i><br/>Paqueterias<br/><br/>
+                                                </h:link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/productos/List" class="nav-link" role="tab" >
+                                                    <i class="material-icons">cake</i><br/>Productos<br/><br/>
+                                                </h:link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/proveedores/List" class="nav-link active" role="tab" >
+                                                    <i class="material-icons">safety_divider</i><br/>Proveedores<br/><br/>
+                                                </h:link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/sabores/List" class="nav-link" role="tab" >
+                                                    <i class="material-icons">redeem</i><br/>Sabores<br/><br/>
+                                                </h:link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/tarjetas/List" class="nav-link active" role="tab" >
+                                                    <i class="material-icons">credit_card</i><br/>Tarjetas<br/><br/>
+                                                </h:link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/tipospago/List" class="nav-link " role="tab" >
+                                                    <i class="material-icons">attach_money</i> Tipos de <br/> Pago<br/><br/>
+                                                </h:link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/tiposusuario/List" class="nav-link active" role="tab" >
+                                                    <i class="material-icons">schema</i> Tipos de <br/> Usuario<br/><br/>
+                                                </h:link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/users/List" class="nav-link" role="tab" >
+                                                    <i class="material-icons">supervised_user_circle</i><br/>Usuarios<br/><br/>
+                                                </h:link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <h:link outcome="/ventas/List" class="nav-link active" role="tab" >
+                                                    <i class="material-icons">payments</i><br/>Ventas<br/><br/>
+                                                </h:link>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+             
+        </ui:define>
+        
+    </ui:composition>
+
+</html>
+

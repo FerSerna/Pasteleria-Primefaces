@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DireccionesdeenvioViewDlg" widgetVar="DireccionesdeenvioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDireccionesdeenvioTitle}">
+            <h:form id="DireccionesdeenvioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{direccionesdeenvioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDireccionesdeenvioLabel_id}"/>
+                        <h:outputText value="#{direccionesdeenvioController.selected.id}" title="#{bundle.ViewDireccionesdeenvioTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewDireccionesdeenvioLabel_calle}"/>
+                        <h:outputText value="#{direccionesdeenvioController.selected.calle}" title="#{bundle.ViewDireccionesdeenvioTitle_calle}"/>
+                        <h:outputText value="#{bundle.ViewDireccionesdeenvioLabel_colonia}"/>
+                        <h:outputText value="#{direccionesdeenvioController.selected.colonia}" title="#{bundle.ViewDireccionesdeenvioTitle_colonia}"/>
+                        <h:outputText value="#{bundle.ViewDireccionesdeenvioLabel_cp}"/>
+                        <h:outputText value="#{direccionesdeenvioController.selected.cp}" title="#{bundle.ViewDireccionesdeenvioTitle_cp}"/>
+                        <h:outputText value="#{bundle.ViewDireccionesdeenvioLabel_numExterior}"/>
+                        <h:outputText value="#{direccionesdeenvioController.selected.numExterior}" title="#{bundle.ViewDireccionesdeenvioTitle_numExterior}"/>
+                        <h:outputText value="#{bundle.ViewDireccionesdeenvioLabel_referenciaConstruccion}"/>
+                        <h:outputText value="#{direccionesdeenvioController.selected.referenciaConstruccion}" title="#{bundle.ViewDireccionesdeenvioTitle_referenciaConstruccion}"/>
+                        <h:outputText value="#{bundle.ViewDireccionesdeenvioLabel_referenciaCalle1}"/>
+                        <h:outputText value="#{direccionesdeenvioController.selected.referenciaCalle1}" title="#{bundle.ViewDireccionesdeenvioTitle_referenciaCalle1}"/>
+                        <h:outputText value="#{bundle.ViewDireccionesdeenvioLabel_referenciaCalle2}"/>
+                        <h:outputText value="#{direccionesdeenvioController.selected.referenciaCalle2}" title="#{bundle.ViewDireccionesdeenvioTitle_referenciaCalle2}"/>
+                        <h:outputText value="#{bundle.ViewDireccionesdeenvioLabel_status}"/>
+                        <h:outputText value="#{direccionesdeenvioController.selected.status}" title="#{bundle.ViewDireccionesdeenvioTitle_status}"/>
+                        <h:outputText value="#{bundle.ViewDireccionesdeenvioLabel_idUsuario}"/>
+                        <h:outputText value="#{direccionesdeenvioController.selected.idUsuario}" title="#{bundle.ViewDireccionesdeenvioTitle_idUsuario}"/>
+                        <h:outputText value="#{bundle.ViewDireccionesdeenvioLabel_idPais}"/>
+                        <h:outputText value="#{direccionesdeenvioController.selected.idPais}" title="#{bundle.ViewDireccionesdeenvioTitle_idPais}"/>
+                        <h:outputText value="#{bundle.ViewDireccionesdeenvioLabel_idEntidad}"/>
+                        <h:outputText value="#{direccionesdeenvioController.selected.idEntidad}" title="#{bundle.ViewDireccionesdeenvioTitle_idEntidad}"/>
+                        <h:outputText value="#{bundle.ViewDireccionesdeenvioLabel_idMunicipio}"/>
+                        <h:outputText value="#{direccionesdeenvioController.selected.idMunicipio}" title="#{bundle.ViewDireccionesdeenvioTitle_idMunicipio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DireccionesdeenvioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

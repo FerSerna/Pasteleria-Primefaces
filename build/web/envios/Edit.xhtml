@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EnviosEditDlg" widgetVar="EnviosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEnviosTitle}">
+            <h:form id="EnviosEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{enviosController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEnviosLabel_id}" for="id" />
+                        <p:inputText id="id" style="width: 180px" disabled="true" value="#{enviosController.selected.id}" title="#{bundle.EditEnviosTitle_id}" required="true" requiredMessage="#{bundle.EditEnviosRequiredMessage_id}"/>
+                       
+                        <p:outputLabel value="#{bundle.EditEnviosLabel_numeroGuia}" for="numeroGuia" />
+                        <p:inputText id="numeroGuia" style="width: 180px" value="#{enviosController.selected.numeroGuia}" title="#{bundle.EditEnviosTitle_numeroGuia}" required="true" requiredMessage="#{bundle.EditEnviosRequiredMessage_numeroGuia}"/>
+                        
+                        <p:outputLabel value="#{bundle.EditEnviosLabel_fechaEnvio}" for="fechaEnvio" />
+                        <p:calendar id="fechaEnvio" pattern="MM/dd/yyyy" value="#{enviosController.selected.fechaEnvio}" title="#{bundle.EditEnviosTitle_fechaEnvio}" required="true" requiredMessage="#{bundle.EditEnviosRequiredMessage_fechaEnvio}" showOn="button"/>
+                        
+                        <p:outputLabel value="#{bundle.EditEnviosLabel_fechaEntrega}" for="fechaEntrega" />
+                        <p:calendar id="fechaEntrega"  pattern="MM/dd/yyyy" value="#{enviosController.selected.fechaEntrega}" title="#{bundle.EditEnviosTitle_fechaEntrega}" required="true" requiredMessage="#{bundle.EditEnviosRequiredMessage_fechaEntrega}" showOn="button"/>
+                        
+                        <p:outputLabel value="#{bundle.EditEnviosLabel_descripcion}" for="descripcion" />
+                        <p:inputTextarea id="descripcion" style="width: 180px" value="#{enviosController.selected.descripcion}" title="#{bundle.EditEnviosTitle_descripcion}" required="true" requiredMessage="#{bundle.EditEnviosRequiredMessage_descripcion}"></p:inputTextarea>
+                        
+
+                        
+                        <p:outputLabel value="#{bundle.EditEnviosLabel_idPaqueteria}" for="idPaqueteria" />
+                        <p:selectOneMenu id="idPaqueteria" style="width: 180px" value="#{enviosController.selected.idPaqueteria}" required="true" requiredMessage="#{bundle.EditEnviosRequiredMessage_idPaqueteria}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{paqueteriasController.items}"
+                                           var="idPaqueteriaItem"
+                                           itemValue="#{idPaqueteriaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEnviosLabel_idEstadosEnvio}" for="idEstadosEnvio" />
+                        <p:selectOneMenu id="idEstadosEnvio" style="width: 180px" value="#{enviosController.selected.idEstadosEnvio}" required="true" requiredMessage="#{bundle.EditEnviosRequiredMessage_idEstadosEnvio}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{estadosdeenvioController.items}"
+                                           var="idEstadosEnvioItem"
+                                           itemValue="#{idEstadosEnvioItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEnviosLabel_idDireccionesDeEnvio}" for="idDireccionesDeEnvio" />
+                        <p:selectOneMenu id="idDireccionesDeEnvio" style="width: 180px" value="#{enviosController.selected.idDireccionesDeEnvio}" required="true" requiredMessage="#{bundle.EditEnviosRequiredMessage_idDireccionesDeEnvio}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{direccionesdeenvioController.items}"
+                                           var="idDireccionesDeEnvioItem"
+                                           itemValue="#{idDireccionesDeEnvioItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEnviosLabel_idVenta}" for="idVenta" />
+                        <p:selectOneMenu id="idVenta" style="width: 180px" value="#{enviosController.selected.idVenta}" required="true" requiredMessage="#{bundle.EditEnviosRequiredMessage_idVenta}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{ventasController.items}"
+                                           var="idVentaItem"
+                                           itemValue="#{idVentaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{enviosController.update}" value="#{bundle.Save}" update="display,:EnviosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EnviosEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EnviosEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SaboresEditDlg" widgetVar="SaboresEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSaboresTitle}">
+            <h:form id="SaboresEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{saboresController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSaboresLabel_id}" for="id" />
+                        <p:inputText id="id" disabled="true" value="#{saboresController.selected.id}" title="#{bundle.EditSaboresTitle_id}" required="true" requiredMessage="#{bundle.EditSaboresRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditSaboresLabel_nombreSabor}" for="nombreSabor" />
+                        <p:inputText id="nombreSabor" value="#{saboresController.selected.nombreSabor}" title="#{bundle.EditSaboresTitle_nombreSabor}" required="true" requiredMessage="#{bundle.EditSaboresRequiredMessage_nombreSabor}"/>
+                        
+                        <p:outputLabel value="#{bundle.EditSaboresLabel_status}" for="status" />
+                        <p:selectOneMenu id="status" value="#{saboresController.selected.status}" style="width: 200px" required="true" requiredMessage="#{bundle.EditSaboresRequiredMessage_status}">
+                             <f:selectItem itemLabel="--Seleccionar--" itemValue=""></f:selectItem>   
+                            <f:selectItem itemLabel="Activo" itemValue="1"></f:selectItem> 
+                            <f:selectItem itemLabel="Baja" itemValue="0"></f:selectItem> 
+                        </p:selectOneMenu>    
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{saboresController.update}" value="#{bundle.Save}" update="display,:SaboresListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SaboresEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SaboresEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

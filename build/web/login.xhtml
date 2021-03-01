@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template/templateLogin.xhtml">
+
+
+        <ui:define name="body">
+            <div class="page-header header-filter" style="background-image: url('resources/assets/img/pastelSlideshow1.jpg'); background-size: cover; background-position: top center;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6 ml-auto mr-auto">
+                            <div class="card ">
+                                <h:form class="form" id="loginForm">
+                                    <div class="card-header card-header-primary text-center">
+                                        <h4 class="card-title">Login</h4>
+                                    </div>
+                                    <br/>
+                                    <div class="card-body">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="material-icons">face</i>
+                                                </span>
+                                            </div>
+
+
+                                            <p:inputText 
+                                                id="user" 
+                                                required="true" 
+                                                value="#{login.username}"
+                                                class="form-control" 
+                                                placeholder="Username..."
+                                                />
+
+                                        </div>
+                                        <br/>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="material-icons">lock_outline</i>
+                                                </span>
+                                            </div>
+
+                                            <p:inputText 
+                                                id="pass" 
+                                                type="password"
+                                                required="true" 
+                                                value="#{login.password}"
+                                                class="form-control" 
+                                                placeholder="Contraseña..."
+                                                />
+
+                                        </div>
+                                        <br/>
+
+                                        <div class="input-group " >
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="material-icons">login</i>
+                                                </span>
+                                            </div>
+
+                                            <p:commandButton
+                                                class="card-header card-header-rose text-center"
+                                                actionListener="#{login.Acceso()}" 
+                                                value="INICIAR SESI&Oacute;N"
+                                                update=":growl" >
+                                                <br/>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                            </p:commandButton>
+
+
+                                            <div class="input-group text-center " >
+
+                                                <p class="text-primary text-center" style="font-size: 18px">
+                                                    <br/>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    ¿Aun no tienes una cuenta? <br/>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    ¡Reg&iacute;strate con nosotros!
+                                                    </p>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <h:link 
+                                                    outcome="/index" 
+                                                    class="btn btn-warning text-center">
+                                                    <i class="material-icons">login</i> REGISTRARSE
+
+                                                </h:link>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+

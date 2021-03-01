@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+
+        <!-- Template Main CSS File-->    
+        <h:outputStylesheet library="css" name="style.css" />
+
+        <!-- Assets CSS Files-->    
+        <h:outputStylesheet name="assets/css/animate.css" />
+        <h:outputStylesheet name="assets/css/aos.css" />
+        <h:outputStylesheet name="assets/css/bootstrap-datepicker.css" />
+        <h:outputStylesheet name="assets/css/bootstrap.min.css" />
+        <h:outputStylesheet name="assets/css/flaticon.css" />
+        <h:outputStylesheet name="assets/css/icomoon.css" />
+        <h:outputStylesheet name="assets/css/ionicons.min.css" />
+        <h:outputStylesheet name="assets/css/jquery.timepicker.css" />
+        <h:outputStylesheet name="assets/css/magnific-popup.css" />
+        <h:outputStylesheet name="assets/css/open-iconic-bootstrap.min.css" />
+        <h:outputStylesheet name="assets/css/owl.carousel.min.css" />
+        <h:outputStylesheet name="assets/css/owl.theme.default.min.css" />
+        
+        <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300&amp;display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300&amp;family=Piedra&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&amp;display=swap" rel="stylesheet" />
+
+    </h:head>
+
+    <h:body>
+
+        
+            <!-- MENU SUPERIOR -->
+            <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+                <div class="container">
+                    <li> <h:link outcome="/home" class="navbar-brand" value="Fers Cakes" /></li>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="oi oi-menu"></span> 
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="ftco-nav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item ">
+                                <li> <h:link outcome="/home" class="navbar-brand" value="Inicio" /></li>
+
+                            </li>
+
+                            <li class="nav-item ">
+                                <li> <h:link outcome="/index" class="navbar-brand" value="CRUDS" /></li>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- END nav -->
+            <div class="main main-raised">
+                <div class="section section-basic">
+                    <div class="container">
+                        <div class="title">
+                          <h2>Basic Elements</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <p:growl id="growl" life="3000" />
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body"/>
+            </p:layoutUnit>
+
+            <!-- PIE DE PAGINA-->
+            <footer class="ftco-footer ftco-section">
+              <div class="container">
+                <div class="row">
+                  <div class="mouse">
+                    <br/>  
+                    <br/>  
+                    <a href="#" class="mouse-icon">
+                      <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                  </div>
+                </div>
+                <div class="row mb-5">
+                  <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ">
+                      <h2 class="ftco-heading-2 text-center">Fer'S Cakes</h2>
+                      <p class="text-center">Comparte con los que más quieres un momento de dulzura</p>
+                      <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                        <div class="text-center">
+                          <li class="ftco-animate" ><a href="https://twitter.com/"><span class="icon-twitter"></span></a></li>
+                        <li class="ftco-animate"><a href="https://www.facebook.com/"><span class="icon-facebook"></span></a></li>
+                        <li class="ftco-animate"><a href="https://www.instagram.com/"><span class="icon-instagram"></span></a></li>
+
+                        </div>
+                      </ul>
+                    </div>
+                  </div>
+
+              </div>
+            </div>
+            </footer>
+
+
+      <!--ASSETS/ JS FILE-->
+      <h:outputScript name="assets/js/jquery.min.js" />
+      <h:outputScript name="assets/js/jquery-migrate-3.0.1.min.js" />
+      <h:outputScript name="assets/js/popper.min.js" />
+      <h:outputScript name="assets/js/bootstrap.min.js" />
+      <h:outputScript name="assets/js/jquery.easing.1.3.js" />
+      <h:outputScript name="assets/js/jquery.waypoints.min.js" />
+      <h:outputScript name="assets/js/jquery.stellar.min.js" />
+      <h:outputScript name="assets/js/owl.carousel.min.js" />
+      <h:outputScript name="assets/js/jquery.magnific-popup.min.js" />
+      <h:outputScript name="assets/js/jquery.animateNumber.min.js" />
+      <h:outputScript name="assets/js/bootstrap-datepicker.js" />
+      <h:outputScript name="assets/js/scrollax.min.js" />
+      <h:outputScript name="assets/js/google-map.js" />
+      <h:outputScript name="assets/js/main.js" />
+      <h:outputScript name="assets/js/jquery-3.5.1.js" />
+      <h:outputScript name="assets/js/jquery.dataTables.min.js" />
+      <h:outputScript name="assets/js/jquery.bootstrap.min.js" />
+      <h:outputScript name="assets/js/jquery.dataTables.js" />
+ 
+    </h:body>
+
+</html>

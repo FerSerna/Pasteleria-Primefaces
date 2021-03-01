@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstadosdeenvioCreateDlg" widgetVar="EstadosdeenvioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEstadosdeenvioTitle}">
+            <h:form id="EstadosdeenvioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{estadosdeenvioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEstadosdeenvioLabel_estadoEnvio}" for="estadoEnvio" />
+                        <p:inputText id="estadoEnvio" value="#{estadosdeenvioController.selected.estadoEnvio}" title="#{bundle.CreateEstadosdeenvioTitle_estadoEnvio}" required="true" requiredMessage="#{bundle.CreateEstadosdeenvioRequiredMessage_estadoEnvio}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{estadosdeenvioController.create}" value="#{bundle.Save}" update="display,:EstadosdeenvioListForm:datalist,:growl" oncomplete="handleSubmit(args,'EstadosdeenvioCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EstadosdeenvioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

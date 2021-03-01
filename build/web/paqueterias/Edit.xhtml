@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PaqueteriasEditDlg" widgetVar="PaqueteriasEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPaqueteriasTitle}">
+            <h:form id="PaqueteriasEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{paqueteriasController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPaqueteriasLabel_id}" for="id" />
+                        <p:inputText id="id" disabled="true" value="#{paqueteriasController.selected.id}" title="#{bundle.EditPaqueteriasTitle_id}" required="true" requiredMessage="#{bundle.EditPaqueteriasRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditPaqueteriasLabel_nombreEmpresa}" for="nombreEmpresa" />
+                        <p:inputText id="nombreEmpresa" value="#{paqueteriasController.selected.nombreEmpresa}" title="#{bundle.EditPaqueteriasTitle_nombreEmpresa}" required="true" requiredMessage="#{bundle.EditPaqueteriasRequiredMessage_nombreEmpresa}"/>
+                        <p:outputLabel value="#{bundle.EditPaqueteriasLabel_rutaImagenLogo}" for="rutaImagenLogo" />
+                        <p:inputText id="rutaImagenLogo" value="#{paqueteriasController.selected.rutaImagenLogo}" title="#{bundle.EditPaqueteriasTitle_rutaImagenLogo}" required="true" requiredMessage="#{bundle.EditPaqueteriasRequiredMessage_rutaImagenLogo}"/>
+                        <p:outputLabel value="#{bundle.EditPaqueteriasLabel_latitud}" for="latitud" />
+                        <p:inputText id="latitud" value="#{paqueteriasController.selected.latitud}" title="#{bundle.EditPaqueteriasTitle_latitud}" required="true" requiredMessage="#{bundle.EditPaqueteriasRequiredMessage_latitud}"/>
+                        <p:outputLabel value="#{bundle.EditPaqueteriasLabel_longitud}" for="longitud" />
+                        <p:inputText id="longitud" value="#{paqueteriasController.selected.longitud}" title="#{bundle.EditPaqueteriasTitle_longitud}" required="true" requiredMessage="#{bundle.EditPaqueteriasRequiredMessage_longitud}"/>
+                        
+                        <p:outputLabel value="#{bundle.EditPaqueteriasLabel_status}" for="status" />
+                        <p:selectOneMenu id="status" value="#{paqueteriasController.selected.status}" style="width: 200px" required="true" requiredMessage="#{bundle.EditPaqueteriasRequiredMessage_status}">
+                             <f:selectItem itemLabel="--Seleccionar--" itemValue=""></f:selectItem>   
+                            <f:selectItem itemLabel="Activo" itemValue="1"></f:selectItem> 
+                            <f:selectItem itemLabel="Baja" itemValue="0"></f:selectItem> 
+                        </p:selectOneMenu>
+                    
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{paqueteriasController.update}" value="#{bundle.Save}" update="display,:PaqueteriasListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PaqueteriasEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PaqueteriasEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

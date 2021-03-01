@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TarjetasCreateDlg" widgetVar="TarjetasCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTarjetasTitle}">
+            <h:form id="TarjetasCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tarjetasController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTarjetasLabel_tipoTarjeta}" for="tipoTarjeta" />
+                        <p:selectOneMenu id="tipoTarjeta" style="width: 180px" value="#{tarjetasController.selected.tipoTarjeta}"  required="true" requiredMessage="#{bundle.CreateTarjetasRequiredMessage_tipoTarjeta}">
+                            <f:selectItem itemLabel="--Seleccionar--" itemValue=""></f:selectItem>   
+                            <f:selectItem itemLabel="Debito" itemValue="Debito"></f:selectItem> 
+                            <f:selectItem itemLabel="Credito" itemValue="Credito"></f:selectItem> 
+                        </p:selectOneMenu>    
+                        
+                        <p:outputLabel value="#{bundle.CreateTarjetasLabel_numeroTarjeta}" for="numeroTarjeta" />
+                        <h:inputSecret id="numeroTarjeta" value="#{tarjetasController.selected.numeroTarjeta}" title="#{bundle.CreateTarjetasTitle_numeroTarjeta}" required="true" requiredMessage="#{bundle.CreateTarjetasRequiredMessage_numeroTarjeta}"></h:inputSecret>
+                      
+                        
+                        <p:outputLabel value="#{bundle.CreateTarjetasLabel_mesExpiracion}" for="mesExpiracion" />
+                        
+                        <h:inputSecret id="mesExpiracion" value="#{tarjetasController.selected.mesExpiracion}" title="#{bundle.CreateTarjetasTitle_mesExpiracion}" required="true" requiredMessage="#{bundle.CreateTarjetasRequiredMessage_mesExpiracion}"/>
+                        
+                        <p:outputLabel value="#{bundle.CreateTarjetasLabel_anioExpiracion}" for="anioExpiracion" />
+                        <h:inputSecret id="anioExpiracion" value="#{tarjetasController.selected.anioExpiracion}" title="#{bundle.CreateTarjetasTitle_anioExpiracion}" required="true" requiredMessage="#{bundle.CreateTarjetasRequiredMessage_anioExpiracion}"/>
+                        
+                        <p:outputLabel value="#{bundle.CreateTarjetasLabel_numeroCVV}" for="numeroCVV" />
+                        <h:inputSecret id="numeroCVV" value="#{tarjetasController.selected.numeroCVV}" title="#{bundle.CreateTarjetasTitle_numeroCVV}" required="true" requiredMessage="#{bundle.CreateTarjetasRequiredMessage_numeroCVV}"/>
+                        
+                        <p:outputLabel value="#{bundle.CreateTarjetasLabel_idUsuario}" for="idUsuario" />
+                        <p:selectOneMenu id="idUsuario" style="width: 180px" value="#{tarjetasController.selected.idUsuario}" required="true" requiredMessage="#{bundle.EditTarjetasRequiredMessage_idUsuario}">
+                            <f:selectItems value="#{usersController.itemsAvailableSelectOne}"
+                                           var="idUsuarioItem"
+                                           itemValue="#{idUsuarioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tarjetasController.create}" value="#{bundle.Save}" update="display,:TarjetasListForm:datalist,:growl" oncomplete="handleSubmit(args,'TarjetasCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TarjetasCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

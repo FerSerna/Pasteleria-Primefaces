@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template/templateAjax.xhtml">
+
+
+        <ui:define name="body">
+            <!--End primary navbar  -->
+            <div class="page-header header-filter clear-filter yellow-filter" data-parallax="true" style="background: url('resources/assets/img/pastelSlideshow1.jpg')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 ml-auto mr-auto">
+                            <div class="brand btn btn-round btn-rose">
+                                <h1 >ACCESO ADMINISTRADOR</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- BASIC ELEMENTS -->
+            <div class="main main-raised">
+                <div class="section ">
+                    <div class="container">
+                        
+                        <div class="row">
+                            <div class=" ml-auto mr-auto">
+                                
+                                <!--INICIO AJAX1-->
+
+                                <div class="section">
+                                    <div class="text-center">
+                                        <h1 class="title" align="center">DEMO AJAX </h1>
+                                    </div> 
+                                    <div class="container">
+                                        <h:form>
+                                            <h:panelGrid columns="2">
+                                                <h:outputLabel value="Pais" />
+                                                <p:selectOneMenu 
+                                                    id="pais" 
+                                                    value="#{ajax.id_pais}" 
+                                                    filter="true" 
+                                                    style="width: 350px" >
+                                                    
+                                                    <f:selectItem 
+                                                        itemLabel="--Seleccionar--" 
+                                                        itemValue="0" />
+                                                    
+                                                    <f:selectItems
+                                                        value="#{ajax.listPaises}" />
+
+                                                    <p:ajax 
+                                                        event="change" 
+                                                        update="entidad,municipio" 
+                                                        listener="#{ajax.buscarEntidades}" 
+                                                        rendered="true" />
+                                                </p:selectOneMenu>
+                                                
+                                                <h:outputLabel value="Entidades" />
+                                                <p:selectOneMenu 
+                                                    id="entidad" 
+                                                    value="#{ajax.id_entidad}" 
+                                                    filter="true" 
+                                                    style="width: 350px">
+                                                    
+                                                    <f:selectItem 
+                                                        itemLabel="--Seleccionar--" 
+                                                        itemValue="0" />
+                                                    
+                                                    <f:selectItems
+                                                        value="#{ajax.listEntidades}" 
+                                                        itemValue="#{ajax.id_entidad}" />
+
+                                                    <p:ajax 
+                                                        event="change" 
+                                                        update="municipio" 
+                                                        listener="#{ajax.buscarMunicipios}" 
+                                                        rendered="true" />
+                                                </p:selectOneMenu>
+                                                
+                                                <h:outputLabel value="Municipios" />
+                                                <p:selectOneMenu 
+                                                    id="municipio" 
+                                                    value="#{ajax.id_municipio}" 
+                                                    filter="true" 
+                                                    style="width: 350px">
+                                                    
+                                                    <f:selectItem 
+                                                        itemLabel="--Seleccionar--" 
+                                                        itemValue="0" />
+                                                    
+                                                    <f:selectItems
+                                                        value="#{ajax.listMunicipios}"/> 
+                                                        
+                                                </p:selectOneMenu>
+
+                                            </h:panelGrid>
+                                            <br/>
+                                            
+                                        </h:form>
+                                    </div>
+                                </div>
+
+                                <!--FIN AJAX1-->
+                                
+                                <!--INICIO AJAX2-->
+
+                                <div class="section">
+                                    <div class="text-center">
+                                        <h1 class="title" align="center">DEMO AJAX 2</h1>
+                                    </div> 
+                                    <div class="container">
+                                        <h:form>
+                                            <h:panelGrid columns="1">
+                                                <h:inputText 
+                                                    id="nombre_entrada"
+                                                    value="#{ajax2.nombre}" />
+                                                <h:commandButton value="Modificar">
+                                                    <f:ajax 
+                                                        execute="nombre_entrada" 
+                                                        render="nombre_salida" />
+                                                </h:commandButton>
+                                                <h:outputLabel 
+                                                    id="nombre_salida" 
+                                                    value="#{ajax2.nombre}" /> 
+                                            </h:panelGrid>
+                                            <br/>
+                                            <h:panelGrid columns="1">
+                                                <h:inputText 
+                                                    id="nombre_entrada2"
+                                                    value="#{ajax2.nombre2}" />
+                                                
+                                                <f:ajax 
+                                                    event="keyup"
+                                                    execute="nombre_entrada2" 
+                                                    render="nombre_salida2" />
+                                                
+                                                <h:outputLabel 
+                                                    id="nombre_salida2" 
+                                                    value="#{ajax2.nombre2}" /> 
+                                            </h:panelGrid>
+                                            <br/>
+                                            
+                                            <h:head>Usando PrimeFaces</h:head>
+                                            <h:panelGrid columns="1">
+                                                <h:inputText 
+                                                    id="nombre_entrada_prime"
+                                                    value="#{ajax2.nombre}" />
+                                                <h:commandButton value="Modificar">
+                                                    <f:ajax 
+                                                        execute="nombre_entrada_prime" 
+                                                        render="nombre_salida_prime" />
+                                                </h:commandButton>
+                                                <h:outputLabel 
+                                                    id="nombre_salida_prime" 
+                                                    value="#{ajax2.nombre}" /> 
+                                            </h:panelGrid>
+                                            
+                                        </h:form>
+                                    </div>
+                                </div>
+
+                                <!--FIN AJAX2-->
+                                
+                                <!--INICIO AJAX3-->
+
+                                <div class="section">
+                                    <div class="text-center">
+                                        <h1 class="title" align="center">DEMO AJAX 3</h1>
+                                    </div> 
+                                    <div class="container">
+                                        <h:form>
+                                            <h:panelGrid columns="2">
+                                                <h:outputLabel value="Nuevo status de Pais" />
+                                                <h:inputText id="nuevo" value="#{ajax3.nuevo}" />
+                                                <h:commandButton value="Modificar Status">
+                                                    <f:ajax 
+                                                        execute="nuevo" 
+                                                        render="mensaje_txt" 
+                                                        listener="#{ajax3.cambiarStatusPais}" />
+                                                </h:commandButton>
+                                                <h:outputLabel 
+                                                    id="mensaje_txt" 
+                                                    value="#{ajax3.mensaje}" /> 
+                                            </h:panelGrid>
+                                            <br/>
+                                        </h:form>
+                                    </div>
+                                </div>
+
+                                <!--FIN AJAX3-->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>    
+
+
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+

@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:composition template="/template/templateCliente.xhtml">
+
+
+        <ui:define name="body">
+            <!--End primary navbar  -->
+            <div class="page-header header-filter clear-filter yellow-filter" data-parallax="true" style="background: url('resources/assets/img/pastelSlideshow1.jpg')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 ml-auto mr-auto">
+                            <div class="brand btn btn-round btn-warning">
+                                <h1 >¡BIENVENIDO!</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--MODIFICACIONES-->
+
+            <div class="section ">
+                <!--INICIO PRODUCTOS-->
+                <div class="container mt-4 ">
+                    <div class="row">
+                        <c:forEach var="item" items="${fotosproductosController.items}">
+                            <div class="col-sm-4">
+
+                                <div class="card">
+                                    <div class="card-header-primary" align="center" >
+
+                                        <h:form style=" height: 90px" > <br/>
+                                            <h:outputText 
+                                                style="font-size: 30px; font-style: italic" 
+                                                value="#{item.idProducto.nombre}" />
+                                        </h:form> 
+                                    </div>
+                                    <div class="card-body text-center">
+
+                                        <h:form>
+                                            <h:outputText 
+                                                class="text-rose title" 
+                                                style="font-size: 30px" 
+                                                value="#{item.idProducto.idCategoria.nombreCategoria}"/>
+
+
+                                        </h:form>
+                                        
+                                        <p:graphicImage 
+                                            name="#{item.ruta}" 
+                                            width="250px" 
+                                            height="180" />
+                                        <br/>
+                                        <h:form>
+                                            <h:outputText 
+                                                class="text-info title" 
+                                                style="font-size: 30px" 
+                                                value="$ #{item.idProducto.precioVenta}" />
+
+
+                                        </h:form>
+                                        <h:form>
+                                            <h:outputText 
+                                                value="#{item.idProducto.descripcion}" />
+                                        </h:form>
+
+                                    </div>
+                                    <div class="card-footer text-center" align="center">
+
+                                        <div align="center" class="text-center">
+
+                                            <!--                                                        <a href="$ {detalleventaproductoController.selected}" class="btn btn-info btn-round">
+                                                                                                        <i class="material-icons">add_shopping_cart</i>Agregar a Carrito
+                                                                                                    </a>-->
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <h:link outcome="/carrito" class="text-center btn btn-warning btn-round">
+                                                <i class="material-icons ">add_shopping_cart</i> Carrito
+                                            </h:link>
+
+<!--                                            <a class="btn btn-round btn-warning">
+                                                <i class="material-icons">attach_money</i>Compras 
+
+                                            </a>-->
+                                        </div>
+                                    </div>
+                                </div> 
+
+
+                            </div>
+                        </c:forEach>
+                    </div>
+
+                </div>
+                <!--FIN PRODUCTOS-->
+            </div>
+            <!--FIN MODIFICACIONES-->  
+
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+

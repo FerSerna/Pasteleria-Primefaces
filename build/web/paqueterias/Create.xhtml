@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PaqueteriasCreateDlg" widgetVar="PaqueteriasCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePaqueteriasTitle}">
+            <h:form id="PaqueteriasCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{paqueteriasController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePaqueteriasLabel_nombreEmpresa}" for="nombreEmpresa" />
+                        <p:inputText id="nombreEmpresa" value="#{paqueteriasController.selected.nombreEmpresa}" title="#{bundle.CreatePaqueteriasTitle_nombreEmpresa}" required="true" requiredMessage="#{bundle.CreatePaqueteriasRequiredMessage_nombreEmpresa}"/>
+                        <p:outputLabel value="#{bundle.CreatePaqueteriasLabel_rutaImagenLogo}" for="rutaImagenLogo" />
+                        <p:inputText id="rutaImagenLogo" value="#{paqueteriasController.selected.rutaImagenLogo}" title="#{bundle.CreatePaqueteriasTitle_rutaImagenLogo}" required="true" requiredMessage="#{bundle.CreatePaqueteriasRequiredMessage_rutaImagenLogo}"/>
+                        <p:outputLabel value="#{bundle.CreatePaqueteriasLabel_latitud}" for="latitud" />
+                        <p:inputText id="latitud" value="#{paqueteriasController.selected.latitud}" title="#{bundle.CreatePaqueteriasTitle_latitud}" required="true" requiredMessage="#{bundle.CreatePaqueteriasRequiredMessage_latitud}"/>
+                        <p:outputLabel value="#{bundle.CreatePaqueteriasLabel_longitud}" for="longitud" />
+                        <p:inputText id="longitud" value="#{paqueteriasController.selected.longitud}" title="#{bundle.CreatePaqueteriasTitle_longitud}" required="true" requiredMessage="#{bundle.CreatePaqueteriasRequiredMessage_longitud}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{paqueteriasController.create}" value="#{bundle.Save}" update="display,:PaqueteriasListForm:datalist,:growl" oncomplete="handleSubmit(args,'PaqueteriasCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PaqueteriasCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

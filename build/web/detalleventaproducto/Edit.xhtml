@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleventaproductoEditDlg" widgetVar="DetalleventaproductoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDetalleventaproductoTitle}">
+            <h:form id="DetalleventaproductoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleventaproductoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDetalleventaproductoLabel_id}" for="id" />
+                        <p:inputText id="id" disabled="true" value="#{detalleventaproductoController.selected.id}" title="#{bundle.EditDetalleventaproductoTitle_id}" required="true" requiredMessage="#{bundle.EditDetalleventaproductoRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditDetalleventaproductoLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{detalleventaproductoController.selected.cantidad}" title="#{bundle.EditDetalleventaproductoTitle_cantidad}" required="true" requiredMessage="#{bundle.EditDetalleventaproductoRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.EditDetalleventaproductoLabel_precioCompra}" for="precioCompra" />
+                        <p:inputText id="precioCompra" value="#{detalleventaproductoController.selected.precioCompra}" title="#{bundle.EditDetalleventaproductoTitle_precioCompra}" required="true" requiredMessage="#{bundle.EditDetalleventaproductoRequiredMessage_precioCompra}"/>
+                        <p:outputLabel value="#{bundle.EditDetalleventaproductoLabel_precioVenta}" for="precioVenta" />
+                        <p:inputText id="precioVenta" value="#{detalleventaproductoController.selected.precioVenta}" title="#{bundle.EditDetalleventaproductoTitle_precioVenta}" required="true" requiredMessage="#{bundle.EditDetalleventaproductoRequiredMessage_precioVenta}"/>
+                        
+                        
+                        
+                        <p:outputLabel value="#{bundle.EditDetalleventaproductoLabel_idProducto}" for="idProducto" />
+                        <p:selectOneMenu id="idProducto" value="#{detalleventaproductoController.selected.idProducto}" required="true" requiredMessage="#{bundle.EditDetalleventaproductoRequiredMessage_idProducto}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{productosController.itemsAvailableSelectOne}"
+                                           var="idProductoItem"
+                                           itemValue="#{idProductoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDetalleventaproductoLabel_idVenta}" for="idVenta" />
+                        <p:selectOneMenu id="idVenta" value="#{detalleventaproductoController.selected.idVenta}" required="true" requiredMessage="#{bundle.EditDetalleventaproductoRequiredMessage_idVenta}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{ventasController.itemsAvailableSelectOne}"
+                                           var="idVentaItem"
+                                           itemValue="#{idVentaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detalleventaproductoController.update}" value="#{bundle.Save}" update="display,:DetalleventaproductoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DetalleventaproductoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetalleventaproductoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
